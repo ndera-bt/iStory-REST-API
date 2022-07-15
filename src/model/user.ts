@@ -1,26 +1,21 @@
 import {
-  Generated,
   BaseEntity,
   Column,
-  PrimaryColumn,
   Entity,
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
   BeforeInsert,
   AfterInsert,
-  AfterUpdate,
   BeforeUpdate,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Story } from "./story";
 import { PasswordManager } from "../util/password";
 
 @Entity("user")
 export class User extends BaseEntity {
-  @PrimaryColumn({
-    type: "uuid",
-  })
-  @Generated("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
@@ -31,7 +26,7 @@ export class User extends BaseEntity {
   })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @OneToMany(() => Story, (story) => story.user, { onDelete: "CASCADE" })

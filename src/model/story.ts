@@ -9,16 +9,14 @@ import {
   ManyToOne,
   JoinColumn,
   ManyToMany,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Tag } from "./tags";
 import { User } from "./user";
 
 @Entity("story")
 export class Story extends BaseEntity {
-  @PrimaryColumn({
-    type: "uuid",
-  })
-  @Generated("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()

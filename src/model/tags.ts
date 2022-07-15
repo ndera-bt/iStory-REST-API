@@ -2,21 +2,17 @@ import {
   BaseEntity,
   Column,
   Entity,
-  PrimaryColumn,
-  Generated,
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
   JoinTable,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Story } from "./story";
 
 @Entity("tags")
 export class Tag extends BaseEntity {
-  @PrimaryColumn({
-    type: "uuid",
-  })
-  @Generated("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({
